@@ -182,7 +182,7 @@ def Linear_Net_models():
 def CNN_model():
     torch.manual_seed(1)  # 为了每次的实验结果一致
     # 设置超参数
-    epoches = 10
+    epoches = 2
     batch_size = 50
     learning_rate = 0.001
 
