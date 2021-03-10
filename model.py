@@ -76,7 +76,8 @@ class CNN_Net(nn.Module):
             nn.Conv2d(in_channels=16, out_channels=32, kernel_size=5, stride=1, padding=2),
             # 经过卷积 输出[32, 14, 14] 传入池化层
             nn.ReLU(),
-            nn.MaxPool2d(kernel_size=2) # 经过池化 输出[32,7,7] 传入输出层
+            nn.MaxPool2d(kernel_size=2) # 经过池化输出
+            # 传入输出层
         )
         # 输出层：in_feature为上一层卷积层输出大小  out_feature为输出的分类类别数
         self.output = nn.Linear(in_features=32*7*7, out_features=10)
