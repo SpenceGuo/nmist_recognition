@@ -8,4 +8,6 @@ if __name__ == '__main__':
     # print(images[0])
     # print(len(images))
     # print(len(labels))
-    Linear_Net_models()
+
+    # Linear_Net_models()
+    CNN_model()
