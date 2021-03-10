@@ -104,7 +104,7 @@ def Linear_Net_models():
     data_tf = transforms.Compose([transforms.ToTensor(), transforms.Normalize([0.5], [0.5])])
     # PyTorch 的内置函数 torchvision.datasets.MN工ST 导入数据集
     train_dataset = datasets.MNIST(
-        root='./data', train=True, transform=data_tf, download=False)
+        root='./data', train=True, transform=data_tf, download=True)
     test_dataset = datasets.MNIST(
         root='./data', train=False, transform=data_tf)
 
@@ -162,12 +162,14 @@ def Linear_Net_models():
         img, label = data
         img = img.view(img.size(0), -1)
         if torch.cuda.is_available():
-            # volatile=True表示前向传播时不会保留缓存。测试集不需要做反向传播，所以可以在前向传播时释放掉内存，节约内存空间c
-            img = Variable(img, volatile=True).cuda()
-            label = Variable(label, volatile=True).cuda()
+            # with torch.no_grad()表示前向传播时不会保留缓存。测试集不需要做反向传播，所以可以在前向传播时释放掉内存，节约内存空间
+            with torch.no_grad():
+                img = Variable(img).cuda()
+                label = Variable(label).cuda()
         else:
-            img = Variable(img, volatile=True)
-            label = Variable(label, volatile=True)
+            with torch.no_grad():
+                img = Variable(img)
+                label = Variable(label)
         out = model(img)
         loss = criterion(out, label)
         eval_loss += loss.data.item() * label.size(0)
