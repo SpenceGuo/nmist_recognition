@@ -1,7 +1,12 @@
 import os
+import torch
 import struct
 import numpy as np
 import matplotlib.pyplot as plt
+
+from torchvision import transforms
+
+from model import *
 
 
 def load_mnist(path, kind='train'):
@@ -27,9 +32,17 @@ def load_mnist(path, kind='train'):
     return images, labels
 
 
-if __name__ == '__main__':
+def predict():
     all_images, all_labels = load_mnist('data/MNIST/raw/')
-    print(all_images[0].reshape(28,28))
-    plt.imshow(all_images[0])
+    temp = all_images[0].reshape(28, 28)
+    plt.imshow(temp)
     plt.show()
-    # print(all_labels)
+
+    model = CNN_Net()
+    model = torch.load('trained_models/cnn_01.pt')
+    torch.no_grad()
+    img_
+
+
+if __name__ == '__main__':
+    print('finished...')
