@@ -29,7 +29,7 @@ def load_mnist(path, kind='train'):
 
 if __name__ == '__main__':
     all_images, all_labels = load_mnist('data/MNIST/raw/')
-    print(all_images[0])
-    # plt.imshow(all_images[0])
-    # plt.show()
+    print(all_images[0].reshape(28,28))
+    plt.imshow(all_images[0])
+    plt.show()
     # print(all_labels)
