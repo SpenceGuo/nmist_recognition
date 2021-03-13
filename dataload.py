@@ -34,15 +34,20 @@ def load_mnist(path, kind='train'):
 
 def predict():
     all_images, all_labels = load_mnist('data/MNIST/raw/')
-    temp = all_images[0].reshape(28, 28)
+    temp = torch.from_numpy(all_images[0].reshape(28, 28))
+    temp = torch.unsqueeze(temp, dim=0).type(torch.FloatTensor) / 255
+
     plt.imshow(temp)
     plt.show()
 
     model = CNN_Net()
     model = torch.load('trained_models/cnn_01.pt')
-    torch.no_grad()
-    img_
+    outputs = model(temp)
+
+    print(temp)
+    # print(model(torch.from_numpy(temp)))
 
 
 if __name__ == '__main__':
+    predict()
     print('finished...')

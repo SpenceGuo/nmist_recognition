@@ -196,8 +196,6 @@ def CNN_model():
     )
     # 显示训练集中的第一张图片
     print(train_data.train_data.size())  # [60000,28,28]
-    # temp = train_data.train_data[0].numpy()
-    # print(temp)
     plt.imshow(train_data.train_data[0].numpy())
     plt.show()
 
