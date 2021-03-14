@@ -206,7 +206,7 @@ def CNN_model():
     test_y = test_data.test_labels
 
     # 将训练数据装入Loader中
-    train_loader = train_loader = DataLoader(dataset=train_data, batch_size=batch_size, shuffle=True, num_workers=3)
+    train_loader = DataLoader(dataset=train_data, batch_size=batch_size, shuffle=True, num_workers=3)
 
     # cnn 实例化
     cnn = CNN_Net()
